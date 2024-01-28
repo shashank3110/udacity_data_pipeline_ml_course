@@ -64,7 +64,7 @@ engine = create_engine('sqlite:///../data/DevDB.db')
 df = pd.read_sql_table('disaster_data_cleaned', engine)
 
 # load model
-model = joblib.load("../models/model_v2.pkl")
+model = joblib.load("../models/model_v3.pkl")
 print(model)
 print(dir(model))
 
