@@ -9,14 +9,21 @@
 
 {% block content %}
     <h1 class="text-center">Result</h1>
-        <ul class="list-group">
-            {% for category, classification in classification_result.items() %}
-                {% if classification == 1 %}
+
+    {% for category, classification in classification_result.items() %}
+        {% if classification == 1 %}
+
+
+            <ul class="list-group">
+            
                     <li class="list-group-item list-group-item-success text-center">{{category.replace('_', ' ').title()}}</li>
-                {% else %}
-                    <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li>
-                {% endif %}
-            {% endfor %}
+
+                    <!-- commenting other categories inorder to display only top predicted classes -->
+       
+                    <!-- <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li> -->
+
+        {% endif %}
+    {% endfor %}
 
         </div>
     </div>
