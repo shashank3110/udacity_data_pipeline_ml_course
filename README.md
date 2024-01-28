@@ -29,7 +29,7 @@ Dataset Source: This dataset has been made available by [Appen](https://appen.co
 + udacity_ml_pipeline/
     + [app/](app/)
         + run.py - Flask web app main script.
-        + [templates/](templates/)
+        + [templates/](app/templates/)
             + go.html - Results Page on Form submission 
             + master.html - Home page
     + [data/](data/)
