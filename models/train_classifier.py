@@ -19,6 +19,10 @@ from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 
 def load_data(database_filepath):
+    """ Data load function from sql
+    database_filepath : str : e.g. 'data.db'
+    
+    """
     # load data from database
     engine = create_engine(f'sqlite:///{database_filepath}')
     df = pd.read_sql_table('disaster_data_cleaned', engine)
@@ -31,7 +35,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
-    
+    """ Basic NLP data processing:
+    - case insensitive
+    - punctuations removal
+    - word tokenization
+    - stop word removal
+    - lemmatization
+
+    text : str : text to be tokenized
+    """
     # make it case agnostic
     text = text.lower()
     # replace punctuations with spaces
@@ -42,11 +54,20 @@ def tokenize(text):
     
     # remove stop words
     words = [word for word in tokens if word not in stopwords.words('english')]
+
+    # lemmatization
+    lem = WordNetLemmatizer()
+    words = [lem.lemmatize(word=word) for word in words ]
     
     return words
 
 
 def build_model():
+    """
+    ML Pipeline:
+    - Feature pipeline
+    - Modelling with Grid Search hyperparam optimization.
+    """
     
     # obtain train test split
     #X_train, X_test, y_train, y_test = train_test_split(X['message'],Y)
@@ -72,7 +93,11 @@ def build_model():
     
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    
+    """Model evaluation
+    model : str : pipeline model object 
+    X_test, Y_test : np.array : test set
+    category_names : list : classes
+    """
     # get predictions from the trained model
     Y_pred = model.predict(X_test)
     Y_pred = pd.DataFrame(Y_pred, columns=category_names)

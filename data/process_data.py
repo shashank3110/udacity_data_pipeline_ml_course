@@ -4,6 +4,10 @@ import sqlite3
 import sqlalchemy
 
 def load_data(messages_filepath, categories_filepath):
+    """ Load data function
+    messages_filepath : str :  path to messages data.
+    categories_filepath : str : path to categories data.
+    """
     # message data
     messages = pd.read_csv(messages_filepath, skiprows=0)
     
@@ -16,6 +20,9 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    """Data cleaning function
+    df : pd.DataFrame : dataset
+    """
     # creating a dataframe of the 36 individual category columns
     categories = df['categories'].str.split(';',expand=True)
     
@@ -43,6 +50,10 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """Saves data to sqlite data 
+    df : str : pd.DataFrame
+    database_filename : str : database name e.g. 'data.db'
+    """
     table_name = 'disaster_data_cleaned'
     
     # drop the test table in case it already exists
