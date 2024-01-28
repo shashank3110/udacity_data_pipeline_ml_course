@@ -23,6 +23,21 @@ Dataset Source: This dataset has been made available by [Appen](https://appen.co
   - Model building with hyper-parameter optimization.
 - Flask based Web UI.
 
+
+### Codebase structure:
+
++ udacity_ml_pipeline/
+    + [app/](app/)
+        + run.py - Flask web app main script.
+        + [templates/](templates/)
+            + go.html - Results Page on Form submission 
+            + master.html - Home page
+    + [data/](data/)
+        + process_data.py  - ETL pipeline script 
+    + [models/](models/)
+        + train_classifier.py - ML pipeline script
+          
+          
 ### Steps to run the project:
 1. Run the following commands in the project's root directory to set up your database and model.
 
